@@ -1,25 +1,37 @@
-<%= form_tag '/addresses', method: :post do %>
-    <div>
-      <%= label_tag :street_address %>
-      <%= text_field_tag :street_address%>
-    </div>
+<header>
+  <h1 class="absolute-center">Address Validator</h1>
+</header>
+  <%= form_tag '/addresses', method: :post do %>
+      <% if flash[:error].present? %>
+        <p class="flash-error"><%= flash[:error] %></p>
+      <% end %>
+      <% if flash[:notice].present? %>
+        <p class="flash-notice"><%= flash[:notice] %></p>
+      <% end %>
 
-    <div>
-      <%= label_tag :city %>
-      <%= text_field_tag :city%>
-    </div>
+      <div class="grid-container absolute-center">
+        <%= label_tag :street_address %><br>
+        <%= text_field_tag :street_address, @street_address, required: true %>
+      </div>
 
-    <div>
-      <%= label_tag :state %>
-      <%= text_field_tag :state%>
-    </div>
+      <div class="grid-container absolute-center">
+        <div class="grid-half">
+          <%= label_tag :city %><br>
+          <%= text_field_tag :city, @city, required: true%>
+        </div>
 
-    <div>
-      <%= label_tag :zip_code %>
-      <%= text_field_tag :zip_code%>
-    </div>
+        <div class="grid-third">
+          <%= label_tag :state %><br>
+          <%= text_field_tag :state, @state, required: true%>
+        </div>
 
-    <div class = "buttons">
-      <%= submit_tag 'Validate Address' %>
-    </div>
-<% end %>
+        <div class="grid-sixth">
+          <%= label_tag :zip_code %><br>
+          <%= text_field_tag :zip_code, @zip_code, required: true%>
+        </div>
+      </div>
+
+      <div class="buttons absolute-center">
+        <%= submit_tag 'Validate Address' %>
+      </div>
+  <% end %>

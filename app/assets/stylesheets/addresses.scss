@@ -1,3 +1,134 @@
 // Place all the styles related to the addresses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$font-stack:    Helvetica Neue, sans-serif;
+
+html {
+  display: table;
+  margin: auto;
+  width: 620px;
+  background-color: #112e51;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 0 3rem;
+  background-color: #fff;
+}
+
+form {
+  margin-bottom: 40px;
+}
+
+header {
+  background-color: #205493;
+  margin: 0;
+  display: block;
+  max-width: 620px;
+  font: 100% $font-stack;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 24px 0;
+  color: #fff;
+}
+
+input[type="text"] {
+  font: 100% $font-stack;
+  font-size: 18px;
+  border: 1px solid #5b616b;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #323a45;
+  padding: 1rem .7em;
+  margin: 0;
+  height: 40px;
+  -webkit-appearance: textfield;
+  background-color: white;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  line-height: normal;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  outline: none;
+}
+
+label {
+  font: 100% $font-stack;
+  font-size:17px;
+  font-weight: 400;
+  margin: 20px 0 5px 0;
+  line-height: 1;
+  max-width: 620px;
+}
+
+input[type=submit] {
+  max-width: 400px;
+  background-color: #e31c3d;
+  color: white;
+  font-size: 17px;
+  padding: 15px 30px;
+  margin: 5px auto 0;
+  border: none;
+  border-radius: .3rem;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #cd2026;
+}
+
+.grid-container {
+  max-width: 620px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  display: block;
+}
+
+.grid-container:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  margin-bottom: 20px;
+}
+
+.grid-half {
+  float: left;
+  display: block;
+  margin-right: 3%;
+  width: 47%;
+}
+
+.grid-third {
+  float: left;
+  display: block;
+  margin-right: 3%;
+  width: 31%;
+}
+
+.grid-sixth {
+  float: left;
+  display: block;
+  margin-right: 0;
+  width: 15%;
+}
+
+p.flash-error {
+  font: 100% $font-stack;
+  color: red;
+}
+
+p.flash-notice {
+  font: 100% $font-stack;
+  color: blue;
+}

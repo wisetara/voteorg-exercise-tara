@@ -14,6 +14,7 @@ RSpec.describe AddressesController, :type => :controller do
       before do
         post 'create', params: valid_params
       end
+
       it 'creates a new address model with the house number saved' do
         expect(assigns(:address).house_number).to eq '1600'
       end
@@ -40,6 +41,71 @@ RSpec.describe AddressesController, :type => :controller do
 
       it 'creates a new address model with the zip_5 saved' do
         expect(assigns(:address).zip_5).to eq '20500'
+      end
+    end
+
+    context 'with predirection and unit' do
+      let(:pre_unit_params) {
+        {
+          street_address: '1725 SE Linn Street Apt 201',
+          city: 'Portland',
+          state: 'OR',
+          zip_code: '97202'
+        }
+      }
+      before do
+        post 'create', params: pre_unit_params
+      end
+
+      it 'creates a new address model with the house number saved' do
+        expect(assigns(:address).house_number).to eq '1725'
+      end
+
+      it 'creates a new address model with the street pre direction saved' do
+        expect(assigns(:address).street_predirection).to eq 'SE'
+      end
+
+      it 'creates a new address model with the street name saved' do
+        expect(assigns(:address).street_name).to eq 'Linn'
+      end
+
+      it 'creates a new address model with the street name saved' do
+        expect(assigns(:address).street_type).to eq 'Street'
+      end
+
+      it 'creates a new address model with the unit type saved' do
+        expect(assigns(:address).unit_type).to eq 'Apt'
+      end
+
+      it 'creates a new address model with the unit number saved' do
+        expect(assigns(:address).unit_number).to eq '201'
+      end
+
+      it 'creates a new address model with the city saved' do
+        expect(assigns(:address).city).to eq 'Portland'
+      end
+
+      it 'creates a new address model with the state saved' do
+        expect(assigns(:address).state).to eq 'OR'
+      end
+
+      it 'creates a new address model with the zip_5 saved' do
+        expect(assigns(:address).zip_5).to eq '97202'
+      end
+    end
+
+    context 'with invalid params' do
+      let(:invalid_params) {
+        {
+          street_address: '1725 SE BanditLindo Street Apt 203',
+          city: 'Portland',
+          state: 'OR',
+          zip_code: '97202'
+        }
+      }
+      it 'does not blow up' do
+        post 'create', params: invalid_params
+        expect(response.code).to eq('422')
       end
     end
   end
